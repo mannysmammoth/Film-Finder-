@@ -36,10 +36,30 @@ NAVIGATION BAR
 .link {
     text-decoration: none;
     font-weight: 900;
+    font-size: 30px;
     color: rgb(207, 207, 22);
-    border-left: 6px solid rgb(207, 207, 22);
-    border-right: 6px solid rgb(207, 207, 22);
     padding: 6px;
+    cursor: pointer;
+}
+
+.link__hover--effect {
+    position: relative;
+}
+
+.link__hover--effect:hover::after {
+    left: 0;
+    width: 100%;
+}
+
+.link__hover--effect::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    height: 6px;
+    right: 0;
+    width: 0;
+    background-color: rgb(207, 207, 22);
+    transition: all 100ms ease-in-out;
 }
 
 .top {
@@ -60,6 +80,11 @@ MAIN CONTENT
     text-align: center;
     color: white;
     font-size: 20px;
+}
+
+.description__span {
+    color: rgb(207, 207, 22);
+    font-weight: 900;
 }
 
 .description__para--one {
@@ -91,8 +116,13 @@ MAIN CONTENT
     font-size: 100px;
     color: rgb(207, 207, 22);
     text-decoration: none;
-    margin-top: 10px;
+    margin-top: 20px;
     width: 100%;
+}
+
+.fa-clapperboard:hover {
+    scale: 1.2;
+    transition: all 200ms ease;
 }
 
 .icon {
@@ -106,12 +136,70 @@ MAIN CONTENT
     color: white;
     width: 100%;
     text-shadow: 10px 20px 15px rgba(167, 181, 43, 0.5);
+    max-width: 130px;
 }
 
 .click__text {
     color: white;
-    font-size: 20px;
-    margin-top: 20px;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+/*
+SEARCH PAGE
+*/
+
+.search__page-title {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.fa-magnifying-glass {
+    margin-top: 5px
+}
+
+.second__section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    max-width: 600px;
+}
+
+.search__bar {
+    flex: 1;
+    color:rgb(207, 207, 22);
+    border-color: rgb(207, 207, 22);
+    border-width: 4px;
+    border-style: solid;
+    max-width: 500px;
+    min-width: 0;
+    width: 100%;
+    padding: 6px;
+    font-size: 30px;
+    border-radius: 20px;
+}
+
+.search__button {
+    flex: 1;
+    background-color: rgb(207, 207, 22);
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 30px;
+    border-radius: 40px;
+    max-width: 120px;
+    width: 120px;
+}
+
+.result__header__title {
+    color: white;
+    font-size: 40px;
+    text-align: left;
+    margin-left: 60px;
+    margin-top: 100px;
 }
 
 /*
@@ -120,7 +208,7 @@ FOOTER
 
 .footer__copyright {
     color: rgb(207, 207, 22);
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 20px;
     text-align: center;
 }
