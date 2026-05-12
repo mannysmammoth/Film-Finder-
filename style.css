@@ -22,6 +22,10 @@ nav {
     align-items: center;
 }
 
+section {
+    padding: 10px 40px;
+}
+
 /*
 NAVIGATION BAR
 */
@@ -200,6 +204,35 @@ SEARCH PAGE
     text-align: left;
     margin-left: 60px;
     margin-top: 100px;
+}
+
+.display__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    max-width: 300px;
+    max-height: 500px;
+    border-radius: 10px;
+    border: 2px solid rgb(207, 207, 22);
+    box-shadow: 0px 30px 15px -20px rgba(255, 255, 255, 0.4);;
+}
+
+.movie__img {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.figure__caption {
+    color: white;
+    font-size: 40px;
+}
+
+.movie__year, .imdb__rating, .film__type {
+    color: white;
+    font-size: 20px;
 }
 
 /*
