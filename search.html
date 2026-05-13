@@ -29,8 +29,8 @@
           <h2 class="search__page-title">Take a Look<i class="fa-solid fa-magnifying-glass"></i></h2>
         </div>
         <div class="second__section">  
-          <input class="search__bar" type="text" placeholder="Search for a movie...">
-          <button class="search__button">Search</button>
+          <input id="searchQuery" type="text" placeholder="Search for a movie...">
+          <button class="search__button" onclick="performSearch()">Search</button>
         </div>
     </section>
     <section id="results__contents">
@@ -38,8 +38,11 @@
           <h2 class="result__header__title">Results:</h2>
         </div>
         <div class="results__container">
-            
+
         </div>
     </section>
+    <footer>
+        <p class="footer__copyright">&copy; 2026 Film Finder. All rights reserved (Emmanuel Corral).</p>
+    </footer>
 </body>
 </html>
