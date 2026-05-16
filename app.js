@@ -1,6 +1,11 @@
 // API 1: https://www.omdbapi.com/?apikey=8e59a55
 
 /*
+GLOBAL STORAGE
+*/
+let currentSearchResults = [];
+
+/*
 SEARCH FUNCTION
 */ 
 
@@ -25,10 +30,17 @@ async function fetchMovieData(searchTerm) {
 
     if (!movieData || movieData.Response === "False") {
         resultsElement.innerHTML = `<p class="no-results">No results found for "${searchTerm}".</p>`;
+        currentSearchResults = [];
         return;
     }
 
-    resultsElement.innerHTML = movieData.Search.map((movie) => `
+    currentSearchResults = movieData.Search;
+    displayMovies(currentSearchResults);
+}
+
+function displayMovies(movies) {
+    const resultsElement = document.querySelector(".results__container");
+    const moviesHTML = movies.map((movie) => `
         <div class="display__box">
             <figure>
                 <img class="movie__img" src="${movie.Poster !== "N/A" ? movie.Poster : 'https://via.placeholder.com/200x300?text=No+Poster'}" alt="Movie Poster">
@@ -38,6 +50,8 @@ async function fetchMovieData(searchTerm) {
             <p class="film__type">Type: ${movie.Type}</p>
         </div>
     `).join("");
+
+    resultsElement.innerHTML = moviesHTML;
 }
 
 /*
@@ -55,3 +69,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+/*
+SORT FUNCTION
+*/ 
+
+function sortResults(sortType) {
+    if (!currentSearchResults.length) return;
+    
+    let sorted = [...currentSearchResults];
+    
+    if (sortType === "movie") {
+        sorted = currentSearchResults.filter(movie => movie.Type === "movie");
+    } else if (sortType === "tv") {
+        sorted = currentSearchResults.filter(movie => movie.Type === "series");
+    } else if (sortType === "year__newest_to_oldest") {
+        sorted.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
+    } else if (sortType === "year__oldest_to_newest") {
+        sorted.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
+    }
+    
+    displayMovies(sorted);
+}
+

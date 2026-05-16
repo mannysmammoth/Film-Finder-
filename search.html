@@ -34,15 +34,27 @@
         </div>
     </section>
     <section id="results__contents">
-        <div>
-          <h2 class="result__header__title">Results:</h2>
+        <div class="results-sorter__conatiner">
+          <div class="sorter__div">
+            <h2 class="result__header__title">Sort by:</h2>
+            <select id="sortOptions" class="filter__selector" onchange="sortResults(this.value)">
+                <option value="" disabled selected>Sort</option>
+                <option value="movie">Movie</option>
+                <option value="tv">TV</option>
+                <option value="year__newest_to_oldest">Year, Recent to Older</option>
+                <option value="year__oldest_to_newest">Year, Older to Recent</option>
+            </select>
+          </div>
+          <div class="results__div">
+            <h2 class="result__header__title">Results:</h2>
+          </div>
         </div>
         <div class="results__container">
 
         </div>
     </section>
     <footer>
-        <p class="footer__copyright">&copy; 2026 Film Finder. All rights reserved (Emmanuel Corral).</p>
+        <p class="footer__copyright">Copyright &copy; 2026 Film Finder. All rights reserved (Emmanuel Corral).</p>
     </footer>
 </body>
 </html>
