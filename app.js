@@ -4,7 +4,6 @@
 GLOBAL STORAGE
 */
 let currentSearchResults = [];
-
 /*
 SEARCH FUNCTION
 */ 
@@ -12,11 +11,17 @@ SEARCH FUNCTION
 async function performSearch() {
     const searchInputValue = document.getElementById("searchQuery").value.trim();
     if (!searchInputValue) {
-        alert("Please enter a movie name to search.");
+        alert("Please enter a movie or show name to search.");
         return;
     }
-
+    
+    const resultsElement = document.querySelector(".results__container");
+    resultsElement.classList.add ("results__container__load");
+    await new Promise(resolve => setTimeout(resolve, 1000));
     await fetchMovieData(searchInputValue);
+    resultsElement.classList.remove ("results__container__load");
+    
+    
 }
 
 /*
@@ -33,7 +38,8 @@ async function fetchMovieData(searchTerm) {
         currentSearchResults = [];
         return;
     }
-
+    
+    
     currentSearchResults = movieData.Search;
     displayMovies(currentSearchResults);
 }
@@ -52,6 +58,7 @@ function displayMovies(movies) {
     `).join("");
 
     resultsElement.innerHTML = moviesHTML;
+
 }
 
 /*
@@ -74,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 SORT FUNCTION
 */ 
 
-function sortResults(sortType) {
+async function sortResults(sortType) {
     if (!currentSearchResults.length) return;
     
     let sorted = [...currentSearchResults];
@@ -89,6 +96,7 @@ function sortResults(sortType) {
         sorted.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
     }
     
+    await new Promise(resolve => setTimeout(resolve, 1000));
     displayMovies(sorted);
 }
 
